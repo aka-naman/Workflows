@@ -7,11 +7,13 @@ from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment
+# kroa
+# tmy
 
 # --- CREDENTIALS & CONFIGURATION ---
 # IMPORTANT: Never share this file or upload it to GitHub once your password is here.
 SENDER_EMAIL = "try1.naman@gmail.com"  # <--- CHANGE THIS
-SENDER_APP_PASSWORD = ""  # <--- CHANGE THIS (No spaces)
+SENDER_APP_PASSWORD = "fduxqzpjf"  # <--- CHANGE THIS (No spaces)
 
 TRACKER_FILENAME = "D:\\auto apply workflow\\Job_Outreach_Tracker.xlsx"
 DAILY_MAX_EMAILS = 50  # Strict safety limit

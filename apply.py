@@ -1,5 +1,6 @@
 import os
-pbts
+# jbs
+# pbts
 import random
 import time
 import smtplib
@@ -12,7 +13,7 @@ from openpyxl.styles import Font, PatternFill, Alignment
 # --- CREDENTIALS & CONFIGURATION ---
 # IMPORTANT: Never share this file or upload it to GitHub once your password is here.
 SENDER_EMAIL = "namansharma10122004@gmail.com"  # <--- CHANGE THIS
-SENDER_APP_PASSWORD = "xmefekhmcjbs"  # <--- CHANGE THIS (No spaces)
+SENDER_APP_PASSWORD = "xmefekhmc"  # <--- CHANGE THIS (No spaces)
 
 TRACKER_FILENAME = "D:\\auto apply workflow\\Job_Outreach_Tracker.xlsx"
 DAILY_MAX_EMAILS = 50  # Strict safety limit
