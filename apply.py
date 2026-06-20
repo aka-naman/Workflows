@@ -1,6 +1,6 @@
 import os
-# jbs
-# pbts
+# 
+# 
 import random
 import time
 import smtplib
@@ -9,7 +9,8 @@ from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
 import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment
-
+# jbs
+# pbts
 # --- CREDENTIALS & CONFIGURATION ---
 # IMPORTANT: Never share this file or upload it to GitHub once your password is here.
 SENDER_EMAIL = "namansharma10122004@gmail.com"  # <--- CHANGE THIS
