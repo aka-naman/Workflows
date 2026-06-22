@@ -1,0 +1,346 @@
+# chat.md
+
+## Project Goal
+
+Build a fully automated job application system using Python.
+
+Primary requirement:
+
+* No paid APIs.
+* Prefer open-source and self-hosted solutions.
+* Use browser automation for job applications.
+* Use local files as knowledge/context sources.
+* Minimize dependence on cloud LLM providers.
+
+---
+
+## Initial Research
+
+Investigated:
+
+* AIHawk (Jobs_Applier_AI_Agent_AIHawk)
+* LangHire
+
+Observations:
+
+### AIHawk
+
+Features:
+
+* Resume generation
+* Job-specific resume tailoring
+* Cover letter generation
+* Browser automation
+* Job matching
+
+Limitations:
+
+* Repository archived.
+* Some provider integrations removed.
+* Original functionality partially unavailable.
+
+---
+
+### LangHire
+
+Features:
+
+* Modern AI job application agent.
+* Browser automation.
+* Multi-provider LLM support.
+* Ollama support.
+
+Important:
+
+Can run without OpenAI API.
+
+Can use:
+
+* Ollama
+* Local models
+* Self-hosted inference
+
+---
+
+## Constraint
+
+User cannot afford paid APIs.
+
+Desired cost:
+
+$0/month
+
+Avoid:
+
+* OpenAI API
+* Anthropic API
+* Gemini API
+
+Prefer:
+
+* Ollama
+* Local models
+* Pure Python solutions
+
+---
+
+## Architecture Discussion
+
+Proposed architecture:
+
+Job Board
+↓
+Playwright
+↓
+Job Scraper
+↓
+Skill Matcher
+↓
+Resume Selector
+↓
+Application Filler
+↓
+Submit
+
+---
+
+## Alternative to LLM APIs
+
+Replace AI-generated reasoning with:
+
+* skills.md
+* profile.yaml
+* answers.yaml
+
+Approach:
+
+Store all candidate knowledge locally.
+
+Python scripts retrieve information directly.
+
+No API calls required.
+
+---
+
+## skills.md Concept
+
+Purpose:
+
+Store:
+
+* Skills
+* Experience
+* Projects
+* Technologies
+* Domain knowledge
+
+Example usage:
+
+Question:
+
+"Describe your Python experience"
+
+System:
+
+1. Search skills.md
+2. Extract Python section
+3. Populate form response
+
+No LLM required.
+
+---
+
+## profile.yaml Concept
+
+Preferred over Markdown.
+
+Structure:
+
+personal:
+skills:
+projects:
+answers:
+preferences:
+
+Advantages:
+
+* Easy parsing
+* Structured data
+* Deterministic automation
+
+---
+
+## Screening Question Strategy
+
+Store common answers.
+
+Examples:
+
+* relocation
+* sponsorship
+* expected salary
+* notice period
+* years of experience
+
+Auto-fill from answers.yaml.
+
+Fallback:
+
+Use profile data.
+
+Never invent information.
+
+---
+
+## Resume Strategy
+
+Maintain multiple resumes.
+
+Examples:
+
+* backend_resume.pdf
+* fullstack_resume.pdf
+* cloud_resume.pdf
+* data_resume.pdf
+
+Selection based on keyword overlap.
+
+Example:
+
+FastAPI + PostgreSQL
+→ backend_resume.pdf
+
+AWS + Terraform
+→ cloud_resume.pdf
+
+---
+
+## Cover Letter Strategy
+
+Use templates instead of AI.
+
+Template variables:
+
+* company
+* role
+* matching skills
+* relevant projects
+
+Generate using:
+
+* Jinja2
+
+No API required.
+
+---
+
+## Browser Automation
+
+Preferred framework:
+
+Playwright
+
+Reasons:
+
+* More reliable than Selenium
+* Better modern browser support
+* Easier automation
+
+Tasks:
+
+* Search jobs
+* Open applications
+* Upload resumes
+* Fill forms
+* Submit applications
+
+---
+
+## Job Matching Logic
+
+Extract:
+
+* Skills
+* Requirements
+* Keywords
+
+Compute:
+
+match_score =
+matched_keywords / required_keywords
+
+Rules:
+
+80%+
+→ Strong match
+
+60-79%
+→ Apply
+
+Below 60%
+→ Skip
+
+---
+
+## Suggested Project Structure
+
+project/
+
+├── profile.yaml
+├── answers.yaml
+├── skills.md
+├── chat.md
+├── matcher.py
+├── scraper.py
+├── resume_selector.py
+├── coverletter.py
+├── apply.py
+├── applications.db
+└── resumes/
+
+---
+
+## Future Enhancement
+
+Optional:
+
+Add local LLM.
+
+Examples:
+
+* Qwen
+* Llama
+* Gemma
+
+Run through:
+
+* Ollama
+
+Benefits:
+
+* Better cover letters
+* Better screening responses
+* No API costs
+
+Not required for initial version.
+
+---
+
+## Core Principle
+
+The system should work even when:
+
+* Internet APIs are unavailable.
+* No paid AI service is available.
+
+All critical logic should rely on:
+
+* Python
+* Local files
+* Playwright
+* Structured candidate data
+
+Goal:
+
+Create a fully self-hosted job application agent with zero recurring cost.
+
